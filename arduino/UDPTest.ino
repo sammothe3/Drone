@@ -43,20 +43,29 @@ void setup()
 
     /* Join wifi network if not already associated */
     if (!wifly.isAssociated()) {
-	/* Setup the WiFly to connect to a wifi network */
-	Serial.println("Joining network");
-	wifly.setSSID(mySSID);
-	wifly.setPassphrase(myPassword);
-	wifly.enableDHCP();
+    	
+	    /* Setup the WiFly to connect to a wifi network */
+		Serial.println("Joining network");
+		wifly.setSSID(mySSID);
+		wifly.setPassphrase(myPassword);
+		wifly.enableDHCP();
 
-	if (wifly.join()) {
-	    Serial.println("Joined wifi network");
-	} else {
-	    Serial.println("Failed to join wifi network");
-	    terminal();
-	}
+		if (wifly.join()) {
+			
+		    Serial.println("Joined wifi network");
+		    
+		} else {
+			
+	    	Serial.println("Failed to join wifi network");
+	    	terminal();
+	    	
+		}
+    
+    	
     } else {
-        Serial.println("Already joined network");
+    	
+       	Serial.println("Already joined network");
+       	
     }
 
     /* Setup for UDP packets, sent automatically */
@@ -88,8 +97,8 @@ void loop()
     /* Send a message every 500 milliseconds */
     if ((millis() - lastSend) > 500) {
         count++;
-	Serial.print("Sending message ");
-	Serial.println(count);
+    	Serial.print("Sending message ");
+	    Serial.println(count);
 
 	if (tick == 0) {
 	    wifly.setHost("192.168.1.1", 8042);
@@ -107,8 +116,8 @@ void loop()
     if (Serial.available()) {
         /* if the user hits 't', switch to the terminal for debugging */
         if (Serial.read() == 't') {
-	    terminal();
-	}
+	        terminal();
+	    }
     }
 
 }
@@ -117,12 +126,12 @@ void terminal()
 {
     Serial.println("Terminal ready");
     while (1) {
-	if (wifly.available() > 0) {
-	    Serial.write(wifly.read());
-	}
+		if (wifly.available() > 0) {
+		    Serial.write(wifly.read());
+		}
 
-	if (Serial.available()) {
-	    wifly.write(Serial.read());
-	}
+		if (Serial.available()) {
+		    wifly.write(Serial.read());
+		}
     }
 }

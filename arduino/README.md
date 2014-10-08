@@ -1,4 +1,3 @@
 Arduino Code
 ===
-Code for FIO + WiFly setup.
-====
+#### Code for FIO + WiFly setup.

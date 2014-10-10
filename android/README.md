@@ -1,2 +1,2 @@
-#### Android Apps for Phonix Drone
+#### Android Apps for Phoenix Drone
 ###### Test UDP
